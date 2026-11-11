@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assistente de FAQ</title>
+<style>
+  :root { --bg:#f5f5f7; --card:#fff; --texto:#1d1d1f; --mudo:#6e6e73; --cor:#4f46e5; --borda:#e5e5ea; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+         background:var(--bg); color:var(--texto); display:flex; justify-content:center; min-height:100vh; }
+  main { width:100%; max-width:640px; display:flex; flex-direction:column; padding:16px; gap:12px; }
+  header h1 { margin:8px 0 0; font-size:1.3rem; }
+  header p { margin:4px 0 0; color:var(--mudo); font-size:.9rem; }
+  #chat { background:var(--card); border:1px solid var(--borda); border-radius:16px; padding:16px;
+          overflow-y:auto; display:flex; flex-direction:column; gap:10px; height:55vh; min-height:300px; }
+  .msg { max-width:85%; padding:10px 14px; border-radius:14px; line-height:1.4; white-space:pre-wrap; }
+  .user { align-self:flex-end; background:var(--cor); color:#fff; border-bottom-right-radius:4px; }
+  .bot { align-self:flex-start; background:#f0f0f3; border-bottom-left-radius:4px; }
+  .erro { background:#fff0f0; color:#b00020; }
+  .sugestoes { display:flex; flex-wrap:wrap; gap:8px; }
+  .sugestoes button { border:1px solid var(--borda); background:var(--card); border-radius:999px;
+                      padding:6px 12px; cursor:pointer; font-size:.85rem; }
+  form { display:flex; gap:8px; }
+  input { flex:1; padding:12px 14px; border:1px solid var(--borda); border-radius:12px; font-size:1rem; }
+  form button { padding:0 18px; border:0; border-radius:12px; background:var(--cor); color:#fff;
+                font-size:1rem; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:default; }
+  small { color:var(--mudo); text-align:center; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Assistente de atendimento</h1>
+    <p>Tire dúvidas sobre pedidos, entregas e reembolsos.</p>
+  </header>
+
+  <div id="chat"></div>
+
+  <div class="sugestoes">
+    <button type="button">Meu pedido atrasou, o que eu faço?</button>
+    <button type="button">Quanto tempo demora o reembolso?</button>
+    <button type="button">Posso usar dois cupons no mesmo pedido?</button>
+  </div>
+
+  <form id="form">
+    <input id="campo" placeholder="Digite sua pergunta..." autocomplete="off">
+    <button id="enviar" type="submit">Enviar</button>
+  </form>
+
+  <small>Projeto de portfólio · FastAPI + LLM</small>
+</main>
+
+<script>
+  const chat = document.getElementById("chat");
+  const form = document.getElementById("form");
+  const campo = document.getElementById("campo");
+  const botao = document.getElementById("enviar");
+
+  function adicionar(texto, classe) {
+    const div = document.createElement("div");
+    div.className = "msg " + classe;
+    div.textContent = texto;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+    return div;
+  }
+
+  async function perguntar(texto) {
+    adicionar(texto, "user");
+    const espera = adicionar("Digitando...", "bot");
+    botao.disabled = true;
+    try {
+      const r = await fetch("/perguntar?pergunta=" + encodeURIComponent(texto), { method: "POST" });
+      const dados = await r.json();
+      if (!r.ok) throw new Error(dados.detail || "Erro no servidor");
+      espera.textContent = dados.resposta;
+    } catch (e) {
+      espera.textContent = "Não consegui responder agora. Tente novamente em instantes.";
+      espera.classList.add("erro");
+    } finally {
+      botao.disabled = false;
+      campo.focus();
+    }
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const texto = campo.value.trim();
+    if (!texto) return;
+    campo.value = "";
+    perguntar(texto);
+  });
+
+  document.querySelectorAll(".sugestoes button").forEach((b) => {
+    b.addEventListener("click", () => perguntar(b.textContent));
+  });
+
+  adicionar("Olá! Sou o assistente de atendimento. Como posso ajudar?", "bot");
+</script>
+</body>
+</html>

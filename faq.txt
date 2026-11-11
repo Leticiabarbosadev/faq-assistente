@@ -1,0 +1,32 @@
+PEDIDO ATRASADO
+Se o pedido atrasar mais de 20 minutos além do prazo estimado, o cliente pode pedir um cupom de R$ 10 pelo chat de ajuda. Se atrasar mais de 60 minutos, pode cancelar e receber reembolso integral.
+
+CANCELAMENTO
+O cliente pode cancelar sem custo enquanto o restaurante ainda não começou a preparar o pedido. Depois disso, o cancelamento depende da análise do atendimento.
+
+REEMBOLSO
+O reembolso é feito na mesma forma de pagamento e leva até 7 dias úteis para aparecer. Pagamentos em dinheiro são devolvidos como crédito no app.
+
+ITEM FALTANDO OU ERRADO
+Se faltar item ou vier errado, o cliente deve enviar uma foto pelo chat de ajuda em até 24 horas. O valor do item é reembolsado após a análise.
+
+ENDEREÇO ERRADO
+Se o endereço foi digitado errado pelo cliente, o pedido não é reembolsado. O cliente pode tentar contato com o entregador antes da entrega.
+
+CUPONS
+Cada cupom vale para um pedido e não é acumulável com outro cupom. Cupons expirados não podem ser reativados.
+
+TAXA DE ENTREGA
+A taxa de entrega é calculada conforme a distância entre o restaurante e o endereço do cliente. O valor é apresentado antes da finalização do pedido. A taxa pode variar conforme a demanda e a região.
+
+FORMAS DE PAGAMENTO
+O aplicativo aceita cartão de crédito, cartão de débito, Pix e dinheiro, dependendo da disponibilidade do restaurante e da região. A forma de pagamento disponível deve ser selecionada antes da confirmação do pedido.
+
+HORÁRIO DE FUNCIONAMENTO
+Os restaurantes possuem horários próprios de funcionamento. O cliente pode consultar a disponibilidade diretamente na página do estabelecimento. Pedidos não podem ser realizados quando o restaurante estiver fechado.
+
+PEDIDO NÃO RECEBIDO
+Se o aplicativo indicar que o pedido foi entregue, mas o cliente não o recebeu, ele deve entrar em contato pelo chat de ajuda para solicitar uma análise. A equipe verificará as informações da entrega antes de definir a solução.
+
+ALTERAÇÃO DO PEDIDO
+Após a confirmação, não é garantido que seja possível alterar os itens ou observações do pedido. O cliente deve entrar em contato com o restaurante pelo aplicativo o mais rápido possível.
