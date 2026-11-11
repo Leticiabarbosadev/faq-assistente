@@ -1,6 +1,10 @@
 # Assistente de FAQ para delivery
 
+**Demo online:** https://faq-assistente.onrender.com/
+> A primeira abertura pode demorar cerca de 30 segundos, porque o servidor gratuito "dorme" quando fica sem uso.
+
 API e interface de chat que respondem dúvidas de atendimento de um app de delivery (atrasos, cancelamentos, reembolsos, cupons) usando um LLM, **apenas com base em um FAQ**. Quando a resposta não está no FAQ, o assistente diz que não sabe em vez de inventar.
+
 
 > Projeto de portfólio. O FAQ (`faq.txt`) é fictício e foi escrito por mim.
 
